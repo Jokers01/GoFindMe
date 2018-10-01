@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{%block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/my_post.css'%}">
+{%endblock %}
+
+{% block content %}
+{% for post in post_cari.all %}
+  {% if post.created_by  == user %}
+  <div class="card card-css">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-10">
+          <table class="table">
+            <thead>
+              <tr>
+                <th> Nama  </th>
+                <th> Umur </th>
+                <th> Tinggi </th>
+                <th> Berat </th>
+                <th> Lokasi Hilang </th>
+                <th> Hadiah </th>
+                <th> Hubungi </th>
+                <th>Status</th>
+                {% if post.ketemu == True %}
+                <th>History</th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{post.name}}</td>
+                <td>{{post.umur}}</td>
+                <td>{{post.tinggi}}kg</td>
+                <td>{{post.berat}}cm</td>
+                <td>{{post.lokasi_hilang}}</td>
+                <td>{{post.reward}}</td>
+                <td>{{post.phone_number}}</td>
+                {% if post.approved_post == True %}
+                <td class="text-success">Diterima</td>
+                {% else %}
+                <td class="text-danger">Belum diterima</td>
+                {% endif %}
+                  {% if post.ketemu == True %}
+                   <td class="text-info"><strong>Ditemukan</strong></td>
+                  {% endif %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-2 mt-3 ">
+          {% if post.ketemu == False %}
+            {% if post.approved_post == True %}
+              <a href="{% url 'post_details' post.pk %}" class="btn btn-info btn-mm px-3" role="button">View</a>
+            {% endif %}
+          <a href="{% url 'edit_postcari' post.pk %}" class="btn btn-success btn-mm px-3" role="button">Edit</a>
+          <a href="{% url 'delete_postcari' post.pk %}" class="btn btn-danger btn-block mt-2" role="button">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      Ciri-ciri : {{ post.desc }}
+    </div>
+    {% if post.approved_post == False %}
+    <div class="card-text text-danger text-center">
+      *{{ post.message_admin }}
+    </div>
+    {%endif%}
+    {% if post.ketemu == True %}
+    <div class="card-text text-success text-center">
+      <p><strong>Kami dari FindMe Team,Turut senang bahwa orang yang anda cari sudah ditemukan :)</strong></p>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/homeawaal.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/homeawaal.js'%}"> </script>
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+
+{% block content_two %}
+  <div class="jumbotron text-dark">
+    <h1>GoFindMe</h1>
+    <h1>We
+      <span
+        class="txt-rotate"
+        data-period="2000"
+        data-rotate='[ "Help You.","Need You.","Love You.","Are Unity.","Are GoFindMe." ]'>
+      </span>
+    </h1>
+    <a role="button" type="button" class="btn btn-dark mt-5" href="#service" name="button">Get Started</a>
+  </div>
+
+<!-- OUR SERVICE -->
+<section id="service">
+  <div class="container">
+    <h2 class="text-center mb-4">OUR SERVICE</h2>
+    <hr>
+    <div class="row">
+      <div class="col-md-7">
+        <h2 class="title-h2">Cari Orang Hilang</h2>
+        <p class="text-p">GoFindMe merupakan aplikasi website yang diperuntukkan untuk melakukan pencarian orang yang hilang melalui networking yang sangat besar,
+          dengan adanya sistem reward pada pencarian orang hilang maka akan semakin membantu keluarga dekat,teman maupun saudara anda yang hilang
+          agar dapat ditemukan secepat mungkin.
+        </p>
+        <h6 class="motto">Our Motto : We Find You As Fast As Possible.</h6>
+      </div>
+      <div class="col-md-5 mb-5">
+        <img src="{% static 'img/gedung.jpeg'%}" class="images-service" alt="">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-7 mb-5">
+        <img src="{% static 'img/gedung.jpeg'%}" class="images-service"  alt="">
+      </div>
+      <div class="col-md-5">
+        <h2 class="title-h2">Cari DPO</h2>
+        <p class="text-p">GoFindMe tidak hanya untuk pencarian orang saja, kami juga membuat pencarian DPO dengan tujuan
+          untuk membantu kepolisian agar dapat menemukan dengan cepat DPO, dengan menggunakan networking dari GoFindMe diharapkan
+          pencarian DPO akan semakin cepat untuk ditemukan.
+        </p>
+        <h6 class="motto">Our Motto : We Find You As Fast As Possible.</h6>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--  -->
+
+  <!-- about us -->
+<section id="about">
+    <div class="jumbotron-custom">
+      <h2 class="text-center title-h2 ">About US </h2>
+      <h2 class="title-h2 mt-3">Tentang GoFindMe</h2>
+      <div id="carousel-about" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner mt-5">
+          <div class="carousel-item active">
+            <h1 class="title-h2 text-light">History</h1>
+            <h3 class="text-light">"Kami Lahir karena adanya skripsi."</h3>
+          </div>
+          <div class="carousel-item">
+            <h1 class="title-h2 text-light">Our Value</h1>
+            <h3 class="text-light">"Kami Lahir karena niat baik untuk membantu orang."</h3>
+          </div>
+          <div class="carousel-item ">
+            <h1 class="title-h2 text-light">Our Motto</h1>
+            <h3 class="text-light">"We Find You As Fast As Possible."</h3>
+          </div>
+          <a class="carousel-control-prev" href="#carousel-about" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-about" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--  -->
+
+<!-- FAQS -->
+    <div class="container" id="faq">
+      <h2 class="text-center mb-5 mt-5">Frequently asked questions(FAQ)</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row"><a class="th-custom" data-toggle="collapse" href="#collapse-faq"  role="button" aria-expanded="false" aria-controls="collapse-faq">Bagaimana jika saya melakukan memberikan informasi palsu? </a> </th>
+          </tr>
+          <tr>
+            <td class="td-custom">
+            <div class="collapse" id="collapse-faq">
+              Sebelum postingan anda diterima, postingan anda akan di olah dan dicek oleh admin setelah di terima baru postingan anda akan muncul di post pencarian orang hilang.
+              <br>
+              jika admin mendapati hal ini maka admin memiliki  hak untuk melakukan delete pada informasi palsu.
+              <br>
+              Admin memiliki kewajiban dapat memberikan peringatan atau melakukan banned pada user yang memberikan informasi palsu.
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><a  class="th-custom" data-toggle="collapse" href="#collapse-faq2"  role="button" aria-expanded="false" aria-controls="collapse-faq2">Jika user telah ditemukan, akan tetapi orang yang mencari tidak mau melakukan pembayaran?</a> </th>
+          </tr>
+          <tr>
+            <td class="td-custom">
+            <div class="collapse" id="collapse-faq2">
+              Kami bisa memberikan jasa agen, akan lebih baik untuk memakai agen kita, karena agen kami akan selalu membawa surat perjanjian hutang apabila user yang mencaritidak bisa melakukan pembayaran sesuai yang tertera di website kami.
+              <br>
+              Akan lebih baik lagi jika user yang mencari orang hilang bisa melakukan input pembayaran sesuai dengan yang bisa dibayar.
+              <br>
+              Jika user tidak memiliki uang diharapkan untuk memasukan input reward = 0, bukan berarti tidak ada orang yang akan membantu, masih ada orang baik di dunia ini.
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><a  class="th-custom" data-toggle="collapse" href="#collapse-faq3"  role="button" aria-expanded="false" aria-controls="collapse-faq3">Apa yang terjadi jika kedua belah pihak tidak ingin memakai agen anda?</a> </th>
+          </tr>
+          <tr>
+            <td class="td-custom">
+            <div class="collapse" id="collapse-faq3">
+              Jika hal itu terjadi maka resiko akan di tanggung oleh kedua belah pihak, karena dari kami selaku GoFindMe team sudah mencoba menawarkan,untuk memakai jasa agen kami. Sesuai dengan Term n Agreement yang ada.
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><a  class="th-custom" data-toggle="collapse" href="#collapse-faq4"  role="button" aria-expanded="false" aria-controls="collapse-faq4">Kenapa tidak melakukan pembayaran deposit online saja?</a> </th>
+          </tr>
+          <tr>
+            <td class="td-custom">
+            <div class="collapse" id="collapse-faq4">
+              Kami mohon maaf, karena kami belum melakukan percobaan pada proses pembayaran ini, tapi kedepannya kami mungkin akan menambahkan fitur ini.
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><a  class="th-custom" data-toggle="collapse" href="#collapse-faq5"  role="button" aria-expanded="false" aria-controls="collapse-faq5">Bisakah melakukan pembayaran melalui bitcoin atau alt coin lainny ?</a> </th>
+          </tr>
+          <tr>
+            <td class="td-custom">
+            <div class="collapse" id="collapse-faq5">
+              Sesuai dengan ketentuan undang-undang yang melarang untuk melakukan transaksi pembayaran menggunakan bitcoin atau altcoin, maka kami selaku GoFindMe tidak akan membuat proses pembayaran ini kedepannya
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><a  class="th-custom" data-toggle="collapse" href="#collapse-faq6"  role="button" aria-expanded="false" aria-controls="collapse-faq6">Apakah Data saya sebagai user aman ?</a> </th>
+          </tr>
+          <tr>
+            <td class="td-custom">
+            <div class="collapse" id="collapse-faq6">
+              Data anda aman di GoFindMe, kami tidak akan memberikan data atau informasi anda atau menjualnya kepihak lain maupun pihak ketiga.
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<!--  -->
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+   <hr class="hr-footer">
+   <div class="container">
+      <h1 class="title-h2 text-center text-dark">Get in Touch</h1>
+      <h6 class="motto text-center">GoFindMe@gmail.com</h6>
+      <h6 class="motto text-center"> or </h6>
+      <h5 class="motto text-center"> Follow Us </h5>
+      <div class="row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+          <a class="sosmed" href="#"> <i class="fab fa-twitter"></i> </a>
+          <a href="#" class="sosmed facebook"> <i class="fab fa-facebook-square"></i> </a>
+          <a href="#" class="sosmed github "> <i class="fab fa-google-plus"></i> </a>
+          <a href="#" class="sosmed instagram"> <i class="fab fa-instagram"></i> </a>
+          <a href="#" class="sosmed line"> <i class="fab fa-line"></i> </a>
+        </div>
+      </div>
+   </div>
+ </footer>
+<!--  -->
+
+{% endblock %}

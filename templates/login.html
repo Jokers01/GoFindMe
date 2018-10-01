@@ -1,0 +1,31 @@
+{% extends 'accounts_base.html' %}
+
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h3 class="card-title text-center"> Login</h3>
+            <form method="post" novalidate>
+              {% csrf_token %}
+              <input type="hidden" name="text" value="{{ next }}">
+              {% include 'includes/form.html' %}
+              <button type="submit" class="btn btn-success btn-block  "> Login </button>
+            </form>
+          </div>
+          <div class="card-footer text-muted text-center">
+            Create an Account?  <a href="{% url 'signup' %}" class="">Sign Up</a>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <small>
+            <a href="{% url 'password_reset' %}" class="text-dark"> Forget Your Password? </a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load form_tags widget_tweaks %}
+
+{% block content %}
+<div class="row ">
+  <div class="col-lg-7 mx-auto">
+    <h1 class="text-center">Form Kehilangan</h1>
+  <form  method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'includes/form.html' %}
+    <button type="submit" name="button" class="btn btn-success"> Submit </button>
+    <a href="{% url 'mypost'%}" class="btn btn-secondary" role="button">Cancel</a>
+  </form>
+</div>
+</div>
+
+{% endblock %}

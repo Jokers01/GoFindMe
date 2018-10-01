@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %} Home {% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/home_two.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="row mt-5">
+  {% for post in cariview %}
+    {% if post.approved_post %}
+      {% if post.ketemu == False  %}
+      <div class="col-lg-4 col-md-6 mt-5">
+        <div class="card card-custom bg-white border-white border-0 mb-3" style="height:500px">
+          <div class="card-custom-img"> </div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="{{ post.picture.url }}" alt="Picture" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title"> <b> KEHILANGAN </b></h4>
+            <table class="mb-3">
+              <tbody>
+                <tr>
+                  <th>Nama : {{post.name}} ({{post.umur}})</th>
+                </tr>
+                <tr>
+                  <th>Kelamin : {{ post.gender }}</th>
+                </tr>
+                <tr>
+                  <th>Tinggi: {{post.tinggi}}cm</th>
+                </tr>
+                <tr>
+                  <th>Berat: {{post.berat}}kg</th>
+                </tr>
+                <tr>
+                  <th>Reward: Rp.{{post.reward}}</th>
+                </tr>
+                <tr>
+                  <th>Lokasi Hilang : {{ post.lokasi_hilang}}</th>
+                </tr>
+                <tr>
+                  <th>Hubungi : {{ post.phone_number }}</th>
+                </tr>
+              </tbody>
+            </table>
+            <p class="card-text"> <strong> Ciri2 : {{ post.desc}} </strong></p>
+          </div>
+          <div class="card-footer" style="background: inherit; border-color: inherit;">
+            {% if post.created_by == user %}
+              <a href="{% url 'ketemu' pk=post.pk  %}" class="btn btn-outline-success">Ketemu</a>
+              <a href="{% url 'mypost' %}" class="btn btn-outline-info">My Post</a>
+              {% endif %}
+            </div>
+            <a href="{% url 'post_details' post.pk %}" class="card-link text-success ml-auto mr-2">More Details</a>
+          </div>
+        </div>
+        {%endif %}
+          {% endif %}
+            {% endfor%}
+    </div>
+
+
+{% include 'includes/pagination.html'%}
+{% endblock %}

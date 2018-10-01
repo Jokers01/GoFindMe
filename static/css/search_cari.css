@@ -1,0 +1,15 @@
+.search-images{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.button-down{
+  margin-top: 10%;
+}
+
+
+body{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

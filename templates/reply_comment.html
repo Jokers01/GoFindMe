@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/simplemde.min.css' %}">
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static 'js/simplemde.min.js' %}"></script>
+  <script>
+    var simplemde = new SimpleMDE();
+  </script>
+{% endblock %}
+
+
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group mt-5">
+     <label for="id_message" class="mt-5">Message/Reply</label>
+     <textarea class="form-control" id="id_message" name="message" rows="5" novalite></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Post</button>
+  </form>
+{%endblock %}

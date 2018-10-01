@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CariOrang Template</title>
+    <link rel="stylesheet" href="{% static 'css/template_cariorang_pdf.css'%}">
+  </head>
+  <body>
+    <h1 class="edit_title ">Orang Hilang</h1>
+    <hr>
+    {% for posts in postcari %}
+    <img src="{{posts.picture.url }}" id="images" alt="">
+      <p class="td-custom">Hadiah Jika Ditemukan</p>
+      <p class="td-custom">Rp.{{posts.reward}}</p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="td"> Name : {{posts.name}}</td>
+          </tr>
+          <tr>
+            <td class="td"> Umur : {{posts.umur}}</td>
+          </tr>
+          <tr>
+            <td class="td"> Tinggi : {{posts.tinggi}}cm </td>
+          </tr>
+          <tr>
+            <td class="td"> Berat : {{posts.berat}}kg </td>
+          </tr>
+          <tr>
+            <td class="td"> Kelamin : {{posts.gender}} </td>
+          </tr>
+          <tr>
+            <td class="td"> Hubungi : {{posts.phone_number}} </td>
+          </tr>
+          <tr>
+            <td class="td"> Ciri-ciri : <span class="ciri">{{posts.desc}}</span> </td>
+          </tr>
+        </tbody>
+      </table>
+    {% endfor %}
+
+    <footer>
+      <p>Provided By GoFindMe</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% load static%}
+{% load widget_tweaks %}
+
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/search_cari.css'%}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% endblock %}
+
+{% block title %} Search Cari Orang Hilang {%endblock %}
+
+{% block content %}
+
+<a class="btn btn-success btn-lg mt-3 ml-2" data-toggle="collapse" href="#collapsesearch" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <i class="far fa-hand-point-right"> <span class="search"> Search </span></i>
+</a>
+
+<div class="collapse" id="collapsesearch">
+<form method="get">
+  <div class="jumbotron bg-light">
+    <h3 class="mt-0 text-success">Search Cari Orang Hilang</h3>
+    <div class="row">
+      <div class="form-group col-sm-4 col-md-3">
+        <label> Name </label>
+        {% render_field post_filter.form.name class="form-control"%}
+      </div>
+      <div class="form-group col-sm-4 col-md-3">
+        {{ post_filter.form.umur.label_tag}}
+        {% render_field post_filter.form.umur class="form-control"%}
+      </div>
+      <div class="form-group col-sm-4 col-md-3">
+        <label> Lokasi Hilang :</label>
+        {% render_field post_filter.form.lokasi_hilang class="form-control"%}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-4 col-md-4">
+        <label>Hadiah : </label>
+        {% render_field post_filter.form.reward class="form-control"%}
+      </div>
+      <div class="form-group col-sm-4 col-md-4">
+        {{ post_filter.form.gender.label_tag}}
+        {% render_field post_filter.form.gender class="form-control"%}
+      </div>
+      <div class="form-group col-sm-4 col-md-4">
+        <label>Tahun :</label>
+        {% render_field post_filter.form.created_at class="form-control"%}
+      </div>
+    </div>
+    <button type="submit" name="button" class="btn btn-success btn-lg btn-block"><i class="fas fa-search"></i>Search</button>
+  </div>
+</form>
+</div>
+
+{% endblock %}
+
+{% block content_two%}
+
+<div class="container mt-5">
+<table class="table table-bordered bg-light">
+  <thead>
+    <tr>
+      <th></th>
+      <th> Nama  </th>
+      <th> Umur  </th>
+      <th> Gender  </th>
+      <th> Location </th>
+      <th> Hadiah  </th>
+      <th> Tanggal Dibuat </th>
+      <th> Link</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in post_filter.qs %}
+    {% if post.approved_post and post.ketemu == False %}
+    <tr>
+      <td> <img src="{{ post.picture.url}}" class="search-images" alt="Images"> </td>
+      <td>{{post.name}}</td>
+      <td>{{post.umur}}</td>
+      <td>{{post.gender}}</td>
+      <td>{{post.lokasi_hilang}}</td>
+      <td>{{post.reward}}</td>
+      <td>{{post.created_at}}</td>
+      <td> <a href="{% url 'post_details' post.pk%}" class="text-success"> Lihat </a> </td>
+    </tr>
+  {% endif %}
+  {% empty %}
+    <h1 class="text-center">Maaf,Pencarian Tidak Ditemukan <i class="fas fa-sad-tear"></i> </h1>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}
