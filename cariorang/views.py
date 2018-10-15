@@ -50,7 +50,7 @@ def BuatPostCari(request):
         form = PostCariForm()
     return render(request,'form_cari.html',{'form':form})
 
-
+@method_decorator(login_required, name="dispatch")
 class postcari_details(DetailView):
     model = PostCari
     context_object_name = "post_cari"
@@ -63,7 +63,7 @@ def postcari_details(request, pk):
     return render(request, 'post_details.html', {'post_cari':post_cari} )
 """
 
-
+@login_required
 def reply_comment(request, pk):
     post_cari = get_object_or_404(PostCari, pk = pk)
 
@@ -102,17 +102,17 @@ class DetailUpdateView(UpdateView):
         detail.updated_by = self.request.user
         detail.updated_at = timezone.now()
         detail.save()
-        return redirect('home')
+        return redirect('post_details', pk=detail.postcari.pk)
 
 
-
+@method_decorator(login_required, name="dispatch")
 class PostCariUpdateView(UpdateView):
     model = PostCari
     fields = ['name','umur','tinggi','berat','gender','reward','phone_number','lokasi_hilang','picture','desc']
     template_name = "edit_postcari.html"
     success_url = "/postcari/mypost"
 
-
+@method_decorator(login_required, name="dispatch")
 class PostCariDeleteView(DeleteView):
     model = PostCari
     template_name = "delete_postcari.html"
@@ -120,13 +120,13 @@ class PostCariDeleteView(DeleteView):
     success_url = reverse_lazy('mypost')
 
 
-
+@login_required
 def ketemu_diterima(request ,pk ):
     post = get_object_or_404(PostCari, pk = pk)
     post.ketemu_approve()
     return redirect('home')
 
-
+@login_required
 def template_cariorang(request,pk):
     try:
         post_cari = PostCari.objects.filter(pk=pk)

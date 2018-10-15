@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{%block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/dpo/mypostdpo.css' %}">
+{%endblock %}
+
+{% block content %}
+{% for posts in mypost.all %}
+  {% if posts.created_by  == user %}
+  <div class="card card-css">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-10">
+          <table class="table">
+            <thead>
+              <tr>
+                <th> Nama  </th>
+                <th> Umur </th>
+                <th> Tinggi </th>
+                <th> Berat </th>
+                <th> Lokasi Hilang </th>
+                <th> Hadiah </th>
+                <th> Hubungi </th>
+                <th> Pekerjaan</th>
+                <th> Pasal</th>
+                <th>Status</th>
+                {% if posts.ketemu == True %}
+                <th>History</th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{posts.name}}</td>
+                <td>{{posts.umur}}</td>
+                <td>{{posts.tinggi}}kg</td>
+                <td>{{posts.berat}}cm</td>
+                <td>{{posts.alamat}}</td>
+                <td>{{posts.reward}}</td>
+                <td>{{posts.phone_number}}</td>
+                <td>{{posts.pekerjaan}}</td>
+                <td class="text-danger">{{posts.pasal}}</td>
+                {% if posts.approved_post == True %}
+                <td class="text-success">Diterima</td>
+                {% else %}
+                <td class="text-danger">Belum diterima</td>
+                {% endif %}
+                  {% if posts.ketemu == True %}
+                   <td class="text-info"><strong>Ditemukan</strong></td>
+                  {% endif %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-2 mt-3 ">
+          {% if posts.ketemu == False %}
+            {% if posts.approved_post == True %}
+              <a href="{% url 'dpo:post_details_dpo' posts.pk %}" class="btn btn-info btn-mm px-3" role="button">View</a>
+            {% endif %}
+          <a href="{% url 'dpo:edit_postcari_dpo' posts.pk %}" class="btn btn-success btn-mm px-3" role="button">Edit</a>
+          <a href="{% url 'dpo:delete_postdpo' posts.pk %}" class="btn btn-danger btn-block mt-2" role="button">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      Ciri-ciri : {{ posts.ciri }}
+    </div>
+    {% if posts.approved_post == False %}
+    <div class="card-text text-danger text-center">
+      *{{ posts.message_admin }}
+    </div>
+    {%endif%}
+    {% if posts.ketemu == True %}
+    <div class="card-text text-success text-center">
+      <p><strong>Kami dari FindMe Team,Turut senang bahwa orang yang anda cari sudah ditemukan :)</strong></p>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+{% endfor %}
+{% endblock %}

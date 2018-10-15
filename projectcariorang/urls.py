@@ -57,5 +57,6 @@ urlpatterns = [
     # path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     re_path(r'ketemu/(?P<pk>\d+)',cariorang_views.ketemu_diterima,name="ketemu"),
     re_path(r'cariorang/pdf/(?P<pk>\d+)',cariorang_views.template_cariorang , name="template_pdf"),
+    path('dpo/', include('dpo.urls',namespace="dpo")),
     path('admin/', admin.site.urls),
 ]+static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)

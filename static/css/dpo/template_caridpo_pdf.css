@@ -1,0 +1,60 @@
+.edit_title{
+  text-align: center;
+  font-family: Georgia, serif;
+  text-transform: uppercase;
+  color : red;
+}
+
+.table{
+  margin-top: 8%;
+}
+
+.td{
+  font-weight: bold;
+  font-family: sans-serif,serif;
+  padding-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.text-center{
+  text-align: center !important;
+}
+
+
+#images{
+  width: 300px;
+  height: 300px;
+  margin: 50px auto auto auto;
+  display: block;
+
+}
+
+.td-custom{
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif,serif;
+  padding-bottom: 10px;
+  font-size: 1.5em;
+}
+
+footer{
+  font-family: cursive;
+  float: right;
+  margin-top: 100px;
+  font-size: 10px;
+}
+
+.ciri{
+  font-family: sans-serif,serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.text-danger{
+  color: red;
+}
+
+footer > p{
+  text-align: center;
+  margin: -5px;
+}

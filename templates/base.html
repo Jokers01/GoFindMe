@@ -26,7 +26,7 @@
               <h6 class="dropdown-header">Postingan</h6>
               <a class="dropdown-item" href="{% url 'home' %}">View Orang Hilang</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#"> View DPO</a>
+              <a class="dropdown-item" href="{% url 'dpo:home' %}"> View DPO</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
@@ -35,7 +35,7 @@
               <h6 class="dropdown-header">Forms</h6>
               <a class="dropdown-item" href="{% url 'formcari' %}">Form Orang Hilang</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#"> Form DPO</a>
+              <a class="dropdown-item" href="{% url 'dpo:formcaridpo' %}"> Form DPO</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
@@ -44,7 +44,7 @@
               <h6 class="dropdown-header">My Post</h6>
               <a class="dropdown-item" href="{% url 'mypost' %}">Post Orang Hilang</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#"> Post DPO</a>
+              <a class="dropdown-item" href="{% url 'dpo:mypostdpo'%}"> Post DPO</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
@@ -53,7 +53,7 @@
               <h6 class="dropdown-header">Pencarian</h6>
               <a class="dropdown-item " href="{% url 'search_hilang' %}">Orang Hilang</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">DPO</a>
+              <a class="dropdown-item" href="{% url 'dpo:search_dpo'%}">DPO</a>
             </div>
           </li>
         </ul>

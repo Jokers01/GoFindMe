@@ -2,14 +2,13 @@
 {% load form_tags widget_tweaks %}
 
 {% block content %}
-<div class="row mt-5">
+<div class="row mt-5 mb-5">
   <div class="col-lg-7 mx-auto mt-5">
-    <h1 class="text-center">Edit Form Kehilangan</h1>
+    <h1 class="text-center">Form DPO</h1>
   <form  method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% include 'includes/form.html' %}
     <button type="submit" name="button" class="btn btn-success"> Submit </button>
-    <a href="{% url 'mypost'%}" class="btn btn-secondary" role="button">Cancel</a>
   </form>
 </div>
 </div>

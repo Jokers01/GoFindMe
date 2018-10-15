@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/post_details.css'%}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% endblock %}
+
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-5 mt-5">
+        <div class="card border-dark">
+          <div class="card-body">
+            <img src="{{post_dpo.gambar.url}}" alt="" class="card-img">
+          </div>
+        </div>
+        <a href="{% url 'dpo:template_pdf_dpo' post_dpo.pk %}"><i class="far fa-file-pdf icon icon-templates" alt="templates"></i></a>
+        <a href="https://plus.google.com/share?url={{ request.build_absolute_url }}"><i class="fab fa-google-plus-square icon icon-google"></i></a>
+        <a href="https://twitter.com/home?status={{ request.build_absolute_url }}"> <i class="fab fa-twitter-square icon icon-twitter"></i></a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_url }}" ><i class="fab fa-facebook-square icon icon-facebook"></i> </a>
+        </div>
+        <div class="col-lg-5 mt-5">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Nama : <span class="ml-2"> {{post_dpo.name|upper}}</span> </th>
+              </tr>
+              <tr>
+                <th>Umur : <span class="ml-2"> {{post_dpo.umur}}</span> </th>
+              </tr>
+              <tr>
+                <th>Pekerjaan :<span class="ml-2"> {{post_dpo.pekerjaan}}</span></th>
+              </tr>
+              <tr>
+                <th>Tinggi :<span class="ml-2"> {{post_dpo.tinggi}} cm</span> </th>
+              </tr>
+              <tr>
+                <th>Berat :<span class="ml-2"> {{post_dpo.berat}} kg</span></th>
+              </tr>
+              <tr>
+                <th>Jenis Kelamin :<span class="ml-2"> {{post_dpo.kelamin}}</span> </th>
+              </tr>
+              <tr>
+                <th>Alamat : <span class="ml-2"> {{post_dpo.alamat}}</span> </th>
+              </tr>
+              <tr>
+                <th>Ciri-ciri : <span class="ml-2"> {{post_dpo.ciri|upper}}</span></th>
+              </tr>
+              <tr>
+                <th>Hadiah :<span class="ml-2"> {% if post_dpo.reward == None %} Tidak ada {% else %} Rp {{post_dpo.reward}} {% endif %}</span> </th>
+              </tr>
+              <tr>
+                <th>Hubungi :<span class="ml-2"> {{post_dpo.phone_number}}</span></th>
+              </tr>
+              <tr>
+                <th class="text-danger"> Melanggar Pasal : <span class="ml-2"> {{post_dpo.pasal}}</span></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<div class="mt-5 ml-3">
+  <a href="{% url 'dpo:reply_comment' post_dpo.pk %}" class="btn btn-primary" role="button">Reply</a>
+</div>
+
+<div class="card mt-5 border-dark mb-4">
+  {% for details in post_dpo.details_dpo.all %}
+  <div class="card-header text-white border-white bg-dark">
+  </div>
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-9">
+        <h5 class="card-title">{{ details.created_by }}</h5>
+        <hr class="bg-dark">
+        <p class="card-text"> {{ details.get_message_as_markdown}} </p>
+      </div>
+      <div class="col-3">
+        <p>{{ details.created_at}}</p>
+        <hr class="bg-dark">
+      </div>
+    </div>
+    {%if details.created_by == user %}
+      <a href="{% url 'dpo:edit_details_dpo' details.pk post_dpo.pk %}" class="btn btn-success" role="button"> Edit </a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

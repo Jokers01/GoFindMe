@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet%}
+  <link rel="stylesheet" href="{% static 'css/dpo/dpo_homee.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row mt-5 mb-5">
+  {% for posts in caridpo %}
+    {% if posts.approved_post %}
+      {% if posts.ketemu == False %}
+  <div class="col-lg-4 card-container mt-5">
+    <div class="card-flip">
+      <div class="card front">
+        <span class="text-center"></span>
+        <div class="card-block">
+          <h1 class="card-title text-center text-danger">WANTED</h1>
+          <img src="{{ posts.gambar.url }}" class="img-size" alt="dpo">
+        </div>
+      </div>
+      <div class="card back">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 mt-2 text-muted">Dipublikasi oleh {{posts.created_by}}, <br> pada {{ posts.created_at }}</h6>
+          <hr>
+          <h4 class="card-title text-center">Identitas</h4>
+          <ul class="card-text mt-2 mr-2 mb-5">
+            <li class="ident">Nama : {{posts.name}} ({{posts.umur}})</li>
+            <li class="ident">Pekerjaan : {{posts.pekerjaan }}</li>
+            <li class="ident">Kelamin : {{posts.kelamin}}</li>
+            <li class="ident">Hadiah : {% if posts.reward == None %} 0 {% else %} Rp.{{posts.reward}} {% endif %}</li>
+          </ul>
+          {% if posts.created_by == request.user %}
+          <a href="#" class="btn btn-block btn-success" role="button">Ketemu</a>
+          <a href="{% url 'dpo:mypostdpo' %}" class="btn btn-block btn-info" role="button">My Post</a>
+          {% endif %}
+        </div>
+        <a class="ml-auto mr-3 indent" href="{% url 'dpo:post_details_dpo' posts.pk %}">More Details</a>
+      </div>
+    </div>
+  </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+{% include 'includes/pagination.html'%}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CariDPO Template</title>
+    <link rel="stylesheet" href="{% static 'css/dpo/template_caridpo_pdf.css'%}">
+  </head>
+  <body>
+    <h1 class="edit_title">WANTED</h1>
+    <hr>
+    {% for posts in postdpo %}
+    <img src="{{posts.gambar.url }}" id="images" alt="">
+      <p class="td-custom">Hadiah Jika Ditemukan</p>
+      <p class="td-custom">{% if posts.reward == None %} Tidak ada {% else %}Rp.{{posts.reward}} {%endif %}</p>
+      <p>Dicari Orang ini karena telah melanggar pasal <span class="text-danger">{{ posts.pasal }}</span>, jika ditemukan harap menghubungi yang bersangkutan.</p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="td"> Name : {{posts.name}}</td>
+          </tr>
+          <tr>
+            <td class="td"> Umur : {{posts.umur}}</td>
+          </tr>
+          <tr>
+            <td class="td"> Tinggi : {{posts.tinggi}}cm </td>
+          </tr>
+          <tr>
+            <td class="td"> Berat : {{posts.berat}}kg </td>
+          </tr>
+          <tr>
+            <td class="td"> Kelamin : {{posts.kelamin}} </td>
+          </tr>
+          <tr>
+            <td class="td"> Pekerjaan : {{posts.pekerjaan}} </td>
+          </tr>
+          <tr>
+            <td class="td"> Alamat : {{posts.alamat}} </td>
+          </tr>
+          <tr>
+            <td class="td"> Hubungi : {{posts.phone_number}} </td>
+          </tr>
+          <tr>
+            <td class="td"> Ciri-ciri : <span class="ciri">{{posts.ciri}}</span> </td>
+          </tr>
+        </tbody>
+      </table>
+    {% endfor %}
+    <footer>
+      <p>Provided By GoFindMe</p>
+    </footer>
+  </body>
+</html>
