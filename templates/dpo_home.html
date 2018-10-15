@@ -32,7 +32,7 @@
             <li class="ident">Hadiah : {% if posts.reward == None %} 0 {% else %} Rp.{{posts.reward}} {% endif %}</li>
           </ul>
           {% if posts.created_by == request.user %}
-          <a href="#" class="btn btn-block btn-success" role="button">Ketemu</a>
+          <a href="{% url 'dpo:ketemu_dpo' pk=posts.pk %}" class="btn btn-block btn-success" role="button">Ketemu</a>
           <a href="{% url 'dpo:mypostdpo' %}" class="btn btn-block btn-info" role="button">My Post</a>
           {% endif %}
         </div>

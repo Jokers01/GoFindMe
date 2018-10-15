@@ -59,6 +59,7 @@ def SearchPostDPO(request):
     return render(request,"search_dpo.html",{'post_filter':post_filter})
 
 
+@method_decorator(login_required, name="dispatch")
 class postdpo_details(DetailView):
     model = PostDPO
     context_object_name = "post_dpo"
@@ -66,7 +67,7 @@ class postdpo_details(DetailView):
     pk_url_kwargs = "pk"
 
 
-
+@login_required
 def reply_comment(request, pk):
     post_dpo = get_object_or_404(PostDPO, pk = pk)
 
@@ -104,6 +105,8 @@ class DetailUpdateView(UpdateView):
         detail.save()
         return redirect('dpo:post_details_dpo', pk = detail.postdpo.pk)
 
+
+@method_decorator(login_required, name="dispatch")
 class PostDPODeleteView(DeleteView):
     model = PostDPO
     template_name = "delete_postcari.html"
@@ -111,7 +114,7 @@ class PostDPODeleteView(DeleteView):
     success_url = reverse_lazy('dpo:mypostdpo')
 
 
-
+@method_decorator(login_required, name="dispatch")
 class PostDPOUpdateView(UpdateView):
     model = PostDPO
     fields = ['name','umur','tinggi','berat','phone_number','kelamin','pasal','pekerjaan','reward','alamat','gambar','ciri']
@@ -138,3 +141,10 @@ def template_caridpo(request,pk):
         return response
 
     return response
+
+
+@login_required
+def ketemu_dpo(request ,pk ):
+    post = get_object_or_404(PostDPO, pk = pk)
+    post.ketemu_approve()
+    return redirect('dpo:home')

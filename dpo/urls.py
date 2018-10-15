@@ -13,6 +13,7 @@ urlpatterns = [
     re_path(r'postdpo/(?P<pk>\d+)/detailsdpo/(?P<pk_details>\d+)/edit/$',dpo_views.DetailUpdateView.as_view(template_name="edit_details_dpo.html"),name="edit_details_dpo"),
     re_path(r'postdpo/(?P<pk>\d+)/delete_postdpo/$',dpo_views.PostDPODeleteView.as_view(template_name="delete_postcari.html"),name="delete_postdpo"),
     re_path(r'postdpo/(?P<pk>\d+)/post_edit_dpo',dpo_views.PostDPOUpdateView.as_view(template_name="edit_postcari_dpo.html"),name="edit_postcari_dpo"),
+    re_path(r'ketemudpo/(?P<pk>\d+)',dpo_views.ketemu_dpo,name="ketemu_dpo"),
     re_path(r'caridpo/pdf/(?P<pk>\d+)',dpo_views.template_caridpo , name="template_pdf_dpo"),
 
 
