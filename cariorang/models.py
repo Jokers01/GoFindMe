@@ -25,6 +25,7 @@ class PostCari(models.Model):
     approved_post = models.BooleanField(default = False)
     message_admin = models.TextField(max_length=1000 , default="", blank =True)
     ketemu = models.BooleanField(default = False)
+    ciri = models.TextField(max_length=10000,blank=True, null = True)
 
     def approve(self):
         self.approved_post = True

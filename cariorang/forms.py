@@ -16,7 +16,7 @@ class PostCariForm(forms.ModelForm):
     picture = forms.ImageField(required=True)
     class Meta:
         model = PostCari
-        fields = ['name','umur','tinggi','berat','gender','reward','phone_number','lokasi_hilang','picture','desc']
+        fields = ['name','umur','tinggi','berat','gender','reward','phone_number','lokasi_hilang','picture','ciri','desc']
 class DetailForm(forms.ModelForm):
 
     class meta:
