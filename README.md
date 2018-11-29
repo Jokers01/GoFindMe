@@ -3,5 +3,10 @@
 
 Hello world
 
-``` testing
+```python
+s = "Python syntax highlighting"
+print s
 ```
+
+d = "Python syntax highlighting"
+print d
