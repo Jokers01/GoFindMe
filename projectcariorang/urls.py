@@ -29,6 +29,7 @@ urlpatterns = [
     path('signup/',accounts_views.signup, name="signup"),
     path('account_activation_sent/',accounts_views.account_activation_sent,name="account_activation_sent"),
     re_path(r'activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',accounts_views.activate,name="activate"),
+    path('account_activation_success',accounts_views.account_activation_success, name="account_activation_success"),
     path('login/',auth_views.LoginView.as_view(template_name="login.html"), name="login"),
     path('logout/',auth_views.LogoutView.as_view(),name="logout"),
     path('reset/',auth_views.PasswordResetView.as_view(
