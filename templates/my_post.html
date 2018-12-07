@@ -50,13 +50,14 @@
             </tbody>
           </table>
         </div>
-        <div class="col-2 mt-3 ">
+        <div class="col-2 mt-3">
           {% if post.ketemu == False %}
             {% if post.approved_post == True %}
               <a href="{% url 'post_details' post.pk %}" class="btn btn-info btn-mm px-3" role="button">View</a>
             {% endif %}
           <a href="{% url 'edit_postcari' post.pk %}" class="btn btn-success btn-mm px-3" role="button">Edit</a>
-          <a href="{% url 'delete_postcari' post.pk %}" class="btn btn-danger btn-block mt-2" role="button">Delete</a>
+          <a href="{% url 'ketemu' pk=post.pk %}" class="btn btn-primary btn-mm px-2 mt-1" role="button">Ketemu</a>
+          <a href="{% url 'delete_postcari' post.pk %}" class="btn btn-danger btn-mm px-2 mt-1" role="button">Delete</a>
           {% endif %}
         </div>
       </div>

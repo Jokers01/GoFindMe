@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/account_activation.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="confirmation-email">
+    <p>Thank You for registration</p>
+    <p>Please check your email address to complete the registration. </p>
+<hr>
+    <p> Regards </p>
+
+    <p class="text-success">GoFindMe Team </p>
+  </div>
+{% endblock %}

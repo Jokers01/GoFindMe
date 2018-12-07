@@ -9,6 +9,7 @@
     {% csrf_token %}
     {% include 'includes/form.html' %}
     <button type="submit" name="button" class="btn btn-success"> Submit </button>
+    <a href="{%  url 'dpo:home' %}" class="btn btn-secondary" role="button"> Cancel</a>
   </form>
 </div>
 </div>

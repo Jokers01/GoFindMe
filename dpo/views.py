@@ -41,7 +41,7 @@ def BuatFormDPO(request):
             post.created_by = request.user
             post.approve = False
             post.save()
-            return redirect("dpo:formcaridpo")
+            return redirect("dpo:mypostdpo")
     else:
         form = PostFormDPO()
     return render(request,"formcaridpo.html",{'form':form})

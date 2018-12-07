@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/account_activation.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="confirmation-email">
+    <p>Registration Token Key : <span class="text-danger">Invalid</span></p>
+    <p>The confirmation link was <span class="text-danger">invalid</span>, possibly because it has already been used.</p>
+<hr>
+    <p> Regards </p>
+
+    <p class="text-success">GoFindMe Team </p>
+  </div>
+{% endblock %}

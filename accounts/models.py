@@ -22,6 +22,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length = 10, choices = gender , default="gender")
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+62'. Up to 15 digits allowed.")
     phone = models.CharField(validators=[phone_regex], max_length=17, blank=True, default="")
+    email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username

@@ -45,7 +45,7 @@ def BuatPostCari(request):
             post.created_by = request.user
             post.approve = False
             post.save()
-            return redirect('formcari')
+            return redirect('mypost')
     else:
         form = PostCariForm()
     return render(request,'form_cari.html',{'form':form})
@@ -80,7 +80,7 @@ def reply_comment(request, pk):
         return redirect('post_details', pk= post_cari.pk)
     return render(request,'reply_comment.html',{'post_cari':post_cari})
 
-
+@login_required
 def mypost(request):
     post_cari = PostCari.objects.all()
     return render(request, 'my_post.html', {'post_cari':post_cari})
