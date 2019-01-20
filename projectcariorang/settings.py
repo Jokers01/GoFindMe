@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'mapwidgets',
     'widget_tweaks',
     'accounts',
     'cariorang',

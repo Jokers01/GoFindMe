@@ -11,7 +11,7 @@ from django.utils import timezone
 from .filters import PostCariFilter
 
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
 
 from weasyprint import HTML
@@ -118,7 +118,6 @@ class PostCariDeleteView(DeleteView):
     template_name = "delete_postcari.html"
     context_object_name = "delete"
     success_url = reverse_lazy('mypost')
-
 
 @login_required
 def ketemu_diterima(request ,pk ):

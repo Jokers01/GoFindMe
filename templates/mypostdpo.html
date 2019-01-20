@@ -60,7 +60,8 @@
               <a href="{% url 'dpo:post_details_dpo' posts.pk %}" class="btn btn-info btn-mm px-3" role="button">View</a>
             {% endif %}
           <a href="{% url 'dpo:edit_postcari_dpo' posts.pk %}" class="btn btn-success btn-mm px-3" role="button">Edit</a>
-          <a href="{% url 'dpo:delete_postdpo' posts.pk %}" class="btn btn-danger btn-block mt-2" role="button">Delete</a>
+          <a href="{% url 'dpo:ketemu_dpo' pk=posts.pk %}" class="btn btn-primary btn-mm px-2 mt-1" role="button">Ketemu</a>
+          <a href="{% url 'dpo:delete_postdpo' posts.pk %}" class="btn btn-danger btn-mm px-2 mt-1" role="button">Delete</a>
           {% endif %}
         </div>
       </div>

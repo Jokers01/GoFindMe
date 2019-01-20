@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import PostCari , Detail
 
+
+
 #customize field in admin site
 admin.site.site_title = "CariOrang Admin"
 admin.site.site_header = "CariOrang Admin"

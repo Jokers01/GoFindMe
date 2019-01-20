@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator
 from django.utils.text import Truncator
 from django.utils.html import mark_safe
 from markdown import markdown
+from django.utils import timezone
 
 # Create your models here.
 
@@ -16,6 +17,7 @@ class PostCari(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     created_by = models.ForeignKey(User,related_name="cariorang",on_delete=models.CASCADE)
     lokasi_hilang = models.CharField(max_length=100, blank = True , null = True)
+    titik_terakhir = models.CharField(max_length= 100, blank =True , null = True)
     picture = models.ImageField( upload_to = 'picture/', null =True , blank = True)
     desc = models.TextField(max_length = 5000)
     gender = (('Laki-Laki','Laki-Laki'),('Perempuan','Perempuan'))

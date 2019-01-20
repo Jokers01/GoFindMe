@@ -3,10 +3,11 @@
 
 {% block content %}
 <div class="row mt-5 mb-5">
-  <div class="col-lg-7 mx-auto mt-5">
+  <div class="col-lg-10 mx-auto mt-5">
     <h1 class="text-center">Form Kehilangan</h1>
   <form  method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    {{ form.media }}
     {% include 'includes/form.html' %}
     <button type="submit" name="button" class="btn btn-success"> Submit </button>
     <a href="{% url 'home' %}" role="button" class="btn btn-secondary"> Cancel</a>
